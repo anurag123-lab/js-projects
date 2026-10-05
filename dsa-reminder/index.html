@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA SITE</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1 id="current-date">date:</h1>
+            <div id="due">Due:</div>
+            <div id="total">Total:</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="input-container">
+            <form id="input-form">
+                <label for="input-field">problem:</label>
+                <input type="text" id="input-field" placeholder="Enter the problem name" required>
+                <label for="link-field" >link:</label>
+                <input type="url" id="link-field" placeholder="Enter the problem link" required>
+                <label for="problem-type">problem type:</label>
+                <select id="problem-type" required>
+                    <option value="array">Array</option>
+                    <option value="string">String</option>
+                    <option value="list">List</option>
+                    <option value="stack">Stack</option>
+                    <option value="queue">Queue</option>
+                    <option value="tree">Tree</option>
+                    <option value="graph">Graph</option>
+                    <option value="dynamic-programming">Dynamic Programming</option>
+                    <option value="greedy">Greedy</option>
+                </select>
+                <label for="difficulty">Difficulty level:</label>
+                <select id="difficulty" required>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+                    <button type="submit" id="add-button">Add</button>
+
+            </form>
+        </div>
+        <div class="due--list">
+            <h2>Due Problems</h2>
+            <ul id="due-list"></ul>
+        </div>
+        <div class="total--list">
+            <h2>Total Problems</h2>
+            <div class="total-table-wrap">
+                <table id="total-list">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Problem</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody id="total-list-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
