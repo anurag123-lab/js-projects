@@ -163,4 +163,8 @@ button{
     .total-table-wrap {
         overflow-x: auto;
     }
+    .due-table-wrap{
+        overflow-x: auto;
+
+    }
 }

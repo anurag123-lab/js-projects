@@ -44,9 +44,22 @@
 
             </form>
         </div>
-        <div class="due--list">
+       <div class="due--list">
             <h2>Due Problems</h2>
-            <ul id="due-list"></ul>
+            <div class="due-table-wrap">
+                <table id="due-list">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Problem</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Type</th>
+                            <th scope="col">Difficulty</th>
+                        </tr>
+                    </thead>
+                    <tbody id="due-list-body"></tbody>
+                </table>
+            </div>
         </div>
         <div class="total--list">
             <h2>Total Problems</h2>

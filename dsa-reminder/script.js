@@ -2,7 +2,7 @@ const dateElement = document.getElementById("current-date");
 const dueElement = document.getElementById("due");
 const totalElement = document.getElementById("total");
 const addButton = document.getElementById("add-button");
-const duelist = document.querySelector("#due-list");
+const duelist = document.querySelector("#due-list-list");
 const totalList = document.querySelector("#total-list-body");
 const inputform = document.getElementById("input-form");
 
@@ -86,3 +86,29 @@ inputform.addEventListener("submit", (e) => {
     });
 
 });
+
+let due = []
+if(updateDate <= addDays(0)){
+    duelist.replaceChildren();
+    problems.forEach((problem) => {
+        const row = document.createElement("tr");
+        [problem.id, problem.problem, problem.link, problem.type, problem.difficulty].forEach((value, index) => {
+            const cell = document.createElement("td");
+            if (index === 2) {
+                const link = document.createElement("a");
+                link.href = value;
+                link.textContent = value;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                cell.append(link);
+            } else {
+                cell.textContent = value;
+            }
+            row.append(cell);
+        });
+        duelist.append(row);
+    });
+    due.push()
+    dueElement = `due problems ${due.length}`
+
+}
