@@ -98,7 +98,7 @@ inputform.addEventListener("submit", (e) => {
 });
 
 totalList.addEventListener("click", (event) => {
-    if (!(event.target instanceof Element)) return;
+    if (!event.target) return;
     const btn = event.target.closest(".delete-btn");
     if (!btn || !totalList.contains(btn)) return;
 
