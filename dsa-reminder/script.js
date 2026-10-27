@@ -33,7 +33,8 @@ function addDays(days) {
     return formatDate(d);
 }
 
-let problems = [];
+let problems  = JSON.parse(localStorage.getItem("problems")) || []
+render();
 
 function render() {
     totalElement.textContent = `Total problems: ${problems.length}`;
@@ -98,12 +99,9 @@ inputform.addEventListener("submit", (e) => {
 });
 
 totalList.addEventListener("click", (event) => {
-    if (!event.target) return;
+    if (!event.target.classList.contains('delete-btn')) return;
     const btn = event.target.closest(".delete-btn");
-    if (!btn || !totalList.contains(btn)) return;
-
     const id = Number(btn.dataset.id);
-    if (!Number.isFinite(id)) return;
 
     problems = problems.filter((problem) => problem.id !== id);
 
