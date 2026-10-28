@@ -2,7 +2,7 @@ const dateElement = document.getElementById("current-date");
 const dueElement = document.getElementById("due");
 const totalElement = document.getElementById("total");
 const addButton = document.getElementById("add-button");
-const duelist = document.querySelector("#due-list-list");
+const duelist = document.querySelector("#due-list-body");
 const totalList = document.querySelector("#total-list-body");
 const inputform = document.getElementById("input-form");
 
@@ -32,6 +32,7 @@ function addDays(days) {
     d.setDate(d.getDate() + days);
     return formatDate(d);
 }
+
 
 let problems  = JSON.parse(localStorage.getItem("problems")) || []
 render();
@@ -67,7 +68,46 @@ function render() {
         row.append(deleteCell);
         totalList.append(row);
     });
+    duerender();
+
 }
+function duerender(){
+    const today = addDays(0)
+    const dueproblems = problems.filter((problem) => problem.due <= today);
+    console.log("due problems are", dueproblems);
+    dueElement.textContent = `due problems: ${dueproblems.length}`;
+    duelist.replaceChildren();
+
+    problems.forEach((problem) => {
+        const row = document.createElement("tr");
+        [problem.id, problem.problem, problem.link, problem.type, problem.difficulty].forEach((value, index) => {
+            const cell = document.createElement("td");
+            if (index === 2) {
+                const link = document.createElement("a");
+                link.href = value;
+                link.textContent = value;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                cell.append(link);
+            } else {
+                cell.textContent = value;
+            }
+            row.append(cell);
+        });
+
+        const deleteCell = document.createElement("td");
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.textContent = "Delete";
+        deleteButton.classList.add("delete-btn");
+        deleteButton.dataset.id = problem.id;
+        deleteCell.append(deleteButton);
+        row.append(deleteCell);
+        duelist.append(row);
+    });
+
+}
+
 
 inputform.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -89,7 +129,8 @@ inputform.addEventListener("submit", (e) => {
         type: typeInput,
         link: linkInput,
         difficulty: difficultyInput,
-        solved: false
+        solved: false,
+        due:addDays(7)
     });
 
     localStorage.setItem("problems", JSON.stringify(problems));

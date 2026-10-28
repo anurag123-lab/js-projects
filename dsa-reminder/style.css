@@ -111,18 +111,18 @@ button{
     margin-left: 0;
 }
 
-.total--list h2 {
+.total--list h2, .due--list h2{
     margin-bottom: 16px;
 }
 
-.total-table-wrap {
+.total-table-wrap,.due-table-wrap {
     width: 100%;
     overflow-x: auto;
     border-radius: 6px;
     background: white;
 }
 
-#total-list {
+#total-list, #due-list {
     width: 100%;
     min-width: 680px;
     border-collapse: collapse;
@@ -130,7 +130,7 @@ button{
     text-align: left;
 }
 
-#total-list th,
+#total-list th,#due-list th,
 #total-list td {
     padding: 12px 14px;
     border-bottom: 1px solid #dce5ec;
@@ -138,14 +138,14 @@ button{
     vertical-align: top;
 }
 
-#total-list th {
+#total-list th,#due-list th {
     background: #e8f3fa;
     color: #174f70;
     font-size: 14px;
     font-weight: 700;
 }
 
-#total-list td {
+#total-list td,#due-list td {
     background: #fff;
     overflow-wrap: anywhere;
 }
@@ -153,8 +153,11 @@ button{
 #total-list tbody tr:last-child td {
     border-bottom: 0;
 }
+#due-list tbody tr:last-child td{
+    border-bottom: 0;
+}
 
-#total-list a {
+#total-list a,#due-list a {
     color: #126da0;
     overflow-wrap: anywhere;
 }
