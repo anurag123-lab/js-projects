@@ -2,7 +2,8 @@
 
 A two-player Tic Tac Toe game that runs in the browser, built with plain **HTML, CSS and JavaScript**. This was my first JavaScript project.
 
-tic-tac-toe/tic tac toe.png
+<img width="1888" height="879" alt="image" src="https://github.com/user-attachments/assets/0e24cd16-1d66-433c-ac79-4dedd00f4e94" />
+
 
 ## Features
 
