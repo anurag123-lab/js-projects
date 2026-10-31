@@ -58,6 +58,7 @@ function render() {
             row.append(cell);
         });
 
+
         const deleteCell = document.createElement("td");
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
@@ -78,7 +79,7 @@ function duerender(){
     dueElement.textContent = `due problems: ${dueproblems.length}`;
     duelist.replaceChildren();
 
-    problems.forEach((problem) => {
+    dueproblems.forEach((problem) => {
         const row = document.createElement("tr");
         [problem.id, problem.problem, problem.link, problem.type, problem.difficulty].forEach((value, index) => {
             const cell = document.createElement("td");
@@ -95,14 +96,14 @@ function duerender(){
             row.append(cell);
         });
 
-        const deleteCell = document.createElement("td");
-        const deleteButton = document.createElement("button");
-        deleteButton.type = "button";
-        deleteButton.textContent = "Delete";
-        deleteButton.classList.add("delete-btn");
-        deleteButton.dataset.id = problem.id;
-        deleteCell.append(deleteButton);
-        row.append(deleteCell);
+        const resolvecell = document.createElement("td");
+        const resolveButton = document.createElement("button");
+        resolveButton.type = "button";
+        resolveButton.textContent = "resolve";
+        resolveButton.classList.add("resolve-btn");
+        resolveButton.dataset.id = problem.id;
+        resolvecell.append(resolveButton);
+        row.append(resolvecell);
         duelist.append(row);
     });
 
@@ -149,3 +150,16 @@ totalList.addEventListener("click", (event) => {
     localStorage.setItem("problems", JSON.stringify(problems));
     render();
 });
+
+duelist.addEventListener("click", (event) =>{
+    if(!event.target.classList.contains('resolve-btn')) return;
+
+    const duebtn = event.target.closest('.resolve-btn');
+    const id = Number(duebtn.dataset.id);
+    const problem = problems.find((p) => p.id === id);
+    problem.due = addDays(7);
+    localStorage.setItem("problems", JSON.stringify(problems));
+    render();
+
+
+})
