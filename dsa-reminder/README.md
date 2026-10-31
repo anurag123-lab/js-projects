@@ -4,7 +4,8 @@ A simple revision tracker for DSA problems. Add a problem after you solve it, an
 
 Built with plain **HTML, CSS and JavaScript**: no frameworks, no backend.
 
-![DSA Reminder screenshot](screenshot.png)
+![<img width="1914" height="883" alt="image" src="https://github.com/user-attachments/assets/30fb716d-54b3-4496-983b-6ccbe8d75a7c" />
+] (dsa.png)
 
 ## Why I built it
 
