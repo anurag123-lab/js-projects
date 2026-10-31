@@ -37,11 +37,7 @@ function addDays(days) {
 let problems  = JSON.parse(localStorage.getItem("problems")) || []
 render();
 
-function render() {
-    totalElement.textContent = `Total problems: ${problems.length}`;
-    totalList.replaceChildren();
-
-    problems.forEach((problem) => {
+function rowbuilder(problem){
         const row = document.createElement("tr");
         [problem.id, problem.problem, problem.link, problem.type, problem.difficulty].forEach((value, index) => {
             const cell = document.createElement("td");
@@ -57,8 +53,17 @@ function render() {
             }
             row.append(cell);
         });
+        return row;
 
 
+}
+
+function render() {
+    totalElement.textContent = `Total problems: ${problems.length}`;
+    totalList.replaceChildren();
+     problems.forEach((problem) => {
+        const row = rowbuilder(problem);
+     
         const deleteCell = document.createElement("td");
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
@@ -68,8 +73,9 @@ function render() {
         deleteCell.append(deleteButton);
         row.append(deleteCell);
         totalList.append(row);
-    });
+     });
     duerender();
+     
 
 }
 function duerender(){
@@ -80,26 +86,13 @@ function duerender(){
     duelist.replaceChildren();
 
     dueproblems.forEach((problem) => {
-        const row = document.createElement("tr");
-        [problem.id, problem.problem, problem.link, problem.type, problem.difficulty].forEach((value, index) => {
-            const cell = document.createElement("td");
-            if (index === 2) {
-                const link = document.createElement("a");
-                link.href = value;
-                link.textContent = value;
-                link.target = "_blank";
-                link.rel = "noopener noreferrer";
-                cell.append(link);
-            } else {
-                cell.textContent = value;
-            }
-            row.append(cell);
-        });
+        const row = rowbuilder(problem);
 
         const resolvecell = document.createElement("td");
         const resolveButton = document.createElement("button");
         resolveButton.type = "button";
         resolveButton.textContent = "resolve";
+        resolveButton.style.backgroundColor = "green"
         resolveButton.classList.add("resolve-btn");
         resolveButton.dataset.id = problem.id;
         resolvecell.append(resolveButton);
